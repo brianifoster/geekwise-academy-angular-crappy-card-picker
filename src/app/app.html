@@ -46,23 +46,27 @@
 			<div class="ui grid">
 				<div class="row">
 					<div class="seven wide middle aligned column">
-						<button class="ui big fluid button">
+						<button (click)="drawCard()" [disabled]="deckHand === 0" class="ui big fluid button">
 							Pick a card!
 						</button>
 					</div>
 					<div class="one wide bottom aligned column">
-						<div class="life-bar"></div>
+						
 					</div>
 					<div class="seven wide middle aligned column">
-							You last drew: n/a
+							You last drew: {{ lastDrawnCard?.rank }}{{ lastDrawnCard?.suit }}
 					</div>
 				</div>
-			</div>
+			</div>	
 		</div>
+		<div class="life-bar">
+			You have {{ deckHand }} left
+		</div>
+		<div class="progress-bar" [ngStyle]="{ width: deckHand * 5 + 'px' }" [ngClass]="deckHand < 25 ? 'progress-bar-low' : deckHand < 35 ? 'progress-bar-med' : ''"></div>
 
-		<div class="ui left floated compact center aligned segment card-in-hand">
-			<button class="ui large button">
-				<h2>card.rank of card.suit</h2>
+		<div *ngFor="let card of userHand" class="ui left floated compact center aligned segment card-in-hand">
+			<button (click)="returnCard(card)" class="ui large button">
+				<h2>{{ card.rank }}{{ card.suit }}</h2>
 				<span class="return">
 					RETURN
 					<i class="reply icon"></i>

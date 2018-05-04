@@ -17,3 +17,18 @@
 .clear {
 	clear: left;
 }
+
+.progress-bar {
+	background-color: green;
+	height: 20px;
+}
+
+.progress-bar-med {
+	background-color: rgb(128, 98, 0);
+	height: 20px;
+}
+
+.progress-bar-low {
+	background-color: rgb(128, 0, 0);
+	height: 20px;
+}
